@@ -29,22 +29,29 @@ express.use(cors()).get('/api/posts', async (_request, response) => {
 io.on('connection', (socket) => {
 	console.log('A user connected.')
 	socket.on('new-post', async (post) => {
-		console.log('New post:', post)
-		await collection.insertOne({
-			body: post,
-			timestamp: new Date(),
-		})
-		io.emit('new-post', post)
+		try {
+			console.log('New post:', post)
+			await collection.insertOne({
+				body: post,
+				timestamp: new Date(),
+			})
+			io.emit('new-post', post)
+		} catch (e) {
+			console.error('Error inserting post:', e)
+		}
 	})
 })
 
 // Responsible for starting the server and establishing a connection to the MongoDB database.
-http.listen(process.env.PORT, async () => {
-	try {
-		await client.connect()
-		collection = client.db('feed').collection('posts')
-		console.log('Server is running on port: %s', http.address().port)
-	} catch (e) {
-		console.error(e)
-	}
-})
+const startServer = async () => {
+    try {
+        await client.connect()
+        collection = client.db('feed').collection('posts')
+        http.listen(process.env.PORT, () => {
+            console.log('Server is running on port: %s', http.address().port)
+        })
+    } catch (e) {
+        console.error('Failed to connect to the database:', e)
+    }
+}
+startServer()

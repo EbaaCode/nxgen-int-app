@@ -1,11 +1,13 @@
+<router-outlet />
 <main class="flex flex-col h-screen text-white mx-96">
-  <router-outlet />
   <div class="border-x-[1px] border-slate-600 pb-10">
     <form
       class="flex gap-4 border-b-[1px] border-slate-600 px-5 h-20"
       (ngSubmit)="sendPost()"
     >
       <input
+        autocomplete="off"
+        maxlength="700"
         class="w-full bg-transparent outline-none placeholder-neutral-500"
         placeholder="What's on your mind?"
         name="post-input"
@@ -13,9 +15,15 @@
         alt="Input for post"
         required
       />
-      <button type="submit" [disabled]="!post">Post</button>
+      <button
+        class="self-center w-20 font-bold transition-colors rounded-full bg-violet-500 hover:enabled:bg-violet-600 active:bg-violet-700 disabled:opacity-50 h-9"
+        type="submit"
+        [disabled]="!post"
+      >
+        Post
+      </button>
     </form>
-    <div class="w-50" *ngFor="let post of posts">
+    <div class="w-50" *ngFor="let post of posts.reverse()">
       <app-post [post]="post" />
     </div>
   </div>

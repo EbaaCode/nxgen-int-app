@@ -1,6 +1,6 @@
-<main>
+<main class="flex flex-col mx-20 h-screen ">
   <router-outlet />
-  <div class="bg-gray-300">
+  <div class="border-x-[1px] border-neutral-400">
     <form (ngSubmit)="sendPost()">
       <input
         name="post-input"
@@ -10,8 +10,8 @@
       />
       <button type="submit" [disabled]="!post">Post</button>
     </form>
-    <div *ngFor="let post of posts">
-      {{ post }}
+    <div class="block h-80 w-50 text-wrap" *ngFor="let post of posts">
+      <app-post [post]=post />
     </div>
   </div>
 </main>

@@ -4,7 +4,14 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      lineClamp: {
+        8: '8',
+      },
+      fontFamily: {
+        'main': ['Inter', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

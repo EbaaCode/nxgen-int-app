@@ -1,8 +1,13 @@
-<main class="flex flex-col mx-20 h-screen ">
+<main class="flex flex-col h-screen text-white mx-96">
   <router-outlet />
-  <div class="border-x-[1px] border-neutral-400">
-    <form (ngSubmit)="sendPost()">
+  <div class="border-x-[1px] border-slate-600">
+    <form
+      class="flex gap-4 border-b-[1px] border-slate-600 px-5 h-20"
+      (ngSubmit)="sendPost()"
+    >
       <input
+        class="w-full bg-transparent outline-none placeholder-neutral-500"
+        placeholder="What's on your mind?"
         name="post-input"
         [(ngModel)]="post"
         alt="Input for post"
@@ -10,8 +15,8 @@
       />
       <button type="submit" [disabled]="!post">Post</button>
     </form>
-    <div class="block h-80 w-50 text-wrap" *ngFor="let post of posts">
-      <app-post [post]=post />
+    <div class="w-50" *ngFor="let post of posts">
+      <app-post [post]="post" />
     </div>
   </div>
 </main>

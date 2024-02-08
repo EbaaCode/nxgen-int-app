@@ -8,11 +8,11 @@ import { PostService } from './post.service';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
-    imports: [RouterOutlet, NgForOf, FormsModule, PostComponent]
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+  imports: [RouterOutlet, NgForOf, FormsModule, PostComponent]
 })
 export class AppComponent {
   title = 'angular-client';

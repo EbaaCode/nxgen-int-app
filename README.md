@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://media.discordapp.net/attachments/692710914310537257/1205367467501686854/image.png?ex=65d81cee&is=65c5a7ee&hm=6e6e0a74883346f387814b3d4381dca41f827a22a34a6ed78b31d2b03c966e32&=&format=webp&quality=lossless&width=1357&height=858" alt="Screenshot of app feed" height="auto" width="500" style="border-radius:15px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);"/>
+  <img src="https://media.discordapp.net/attachments/692710914310537257/1205371643833090079/image.png?ex=65d820d2&is=65c5abd2&hm=a0966b27755cb5a0b15c2bc5b232ab78bf2db8077440427fc4173b9e9425cfe0&=&format=webp&quality=lossless&width=1357&height=858" alt="Screenshot of app feed" height="auto" width="500"/>
 </p>
 
 # Real-Time Angular Application

@@ -1,6 +1,6 @@
 <router-outlet />
-<main class="flex flex-col h-screen text-white mx-96">
-  <div class="border-x-[1px] border-slate-600 pb-10">
+<main class="flex flex-col items-center text-white">
+  <div class="border-x-[1px] border-slate-600 w-5/6 lg:w-2/4">
     <form
       class="flex gap-4 border-b-[1px] border-slate-600 px-5 h-20"
       (ngSubmit)="sendPost()"
@@ -11,20 +11,32 @@
         class="w-full bg-transparent outline-none placeholder-neutral-500"
         placeholder="What's on your mind?"
         name="post-input"
-        [(ngModel)]="post"
+        [(ngModel)]="content"
         alt="Input for post"
         required
       />
       <button
         class="self-center w-20 font-bold transition-colors rounded-full bg-violet-500 hover:enabled:bg-violet-600 active:bg-violet-700 disabled:opacity-50 h-9"
         type="submit"
-        [disabled]="!post"
+        [disabled]="!content"
       >
         Post
       </button>
     </form>
-    <div class="w-50" *ngFor="let post of posts.reverse()">
-      <app-post [post]="post" />
+    <div *ngFor="let post of posts.reverse()">
+      <app-post [post]="post.body" [timestamp]="post.timestamp" />
+    </div>
+    <div class="flex items-center justify-center h-16">
+      <p class="text-xs text-neutral-500">
+        Built by
+        <a
+          class="underline underline-offset-1 text-violet-500 hover:text-violet-600"
+          href="https://github.com/ebaacode"
+          target="_blank"
+          >Ebaa</a
+        >
+        with ❤️
+      </p>
     </div>
   </div>
 </main>

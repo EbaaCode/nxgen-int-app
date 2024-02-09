@@ -14,7 +14,7 @@ Follow these steps to get a local copy of the project up and running for develop
 
 Make sure you have the following installed on your machine:
 
-[Node.js](https://nodejs.org/en) (with npm)
+[Node.js](https://nodejs.org/en) (with npm)\
 [Angular CLI](https://angular.io/cli)
 
 ### Installation

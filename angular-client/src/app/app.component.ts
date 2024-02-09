@@ -6,13 +6,14 @@ import { Post } from './post.interface';
 import { PostComponent } from "./post/post.component";
 import { PostService } from './post.service';
 import { RouterOutlet } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [RouterOutlet, NgForOf, FormsModule, PostComponent]
+  imports: [RouterOutlet, NgForOf, FormsModule, PostComponent, HttpClientModule]
 })
 export class AppComponent {
   title = 'angular-client';

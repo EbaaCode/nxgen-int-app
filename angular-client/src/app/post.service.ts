@@ -1,5 +1,6 @@
 import { Observable, Observer } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Post } from './post.interface';
 import { environment } from '../environments/environment.development';
 import io from 'socket.io-client';
 
@@ -16,7 +17,7 @@ export class PostService {
   }
 
   // sendPost is a method that sends a new post to the server via the WebSocket connection.
-  public sendPost(post: string): void {
+  public sendPost(post: Post): void {
     if (this.socket.connected) {
       this.socket.emit('new-post', post);
     } else {
@@ -25,9 +26,9 @@ export class PostService {
   }
 
   // This Observable emits a new value whenever a new post is received from the server.
-  public getPosts(): Observable<string> {
-    return new Observable((observer: Observer<string>) => {
-      this.socket.on('new-post', (post) => {
+  public getPosts(): Observable<Post> {
+    return new Observable((observer: Observer<Post>) => {
+      this.socket.on('new-post', (post: Post) => {
         observer.next(post);
       });
     })

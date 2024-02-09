@@ -16,8 +16,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-client';
-  post!: string;
-  posts: string[] = [];
+  content!: string;
+  post!: Post;
+  posts: Post[] = [];
 
   // Inject the PostService and ApiService in the constructor
   constructor(
@@ -32,15 +33,15 @@ export class AppComponent {
 
   // Method to send a new post
   sendPost() {
-    if (this.post) {
-      this.postService.sendPost(this.post);
-      this.post = '';
+    if (this.content) {
+      this.postService.sendPost({ body: this.content, timestamp: new Date() });
+      this.content = '';
     }
   }
 
   // Method to fetch posts
   fetchPost() {
-    this.postService.getPosts().subscribe((post: string) => {
+    this.postService.getPosts().subscribe((post: Post) => {
       this.posts.push(post);
     });
   }
@@ -48,7 +49,7 @@ export class AppComponent {
   // Method to fetch data
   fetchData() {
     this.apiService.getData().subscribe((data: Post[]) => {
-      this.posts = data.map((post) => post.body);
+      this.posts = data.map((post) => post);
     });
   }
 }

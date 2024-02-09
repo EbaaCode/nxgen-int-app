@@ -30,11 +30,8 @@ io.on('connection', (socket) => {
 	console.log('A user connected.')
 	socket.on('new-post', async (post) => {
 		try {
-			console.log('New post:', post)
-			await collection.insertOne({
-				body: post,
-				timestamp: new Date(),
-			})
+			console.log('New post:', post.body)
+			await collection.insertOne(post)
 			io.emit('new-post', post)
 		} catch (e) {
 			console.error('Error inserting post:', e)
@@ -44,14 +41,14 @@ io.on('connection', (socket) => {
 
 // Responsible for starting the server and establishing a connection to the MongoDB database.
 const startServer = async () => {
-    try {
-        await client.connect()
-        collection = client.db('feed').collection('posts')
-        http.listen(process.env.PORT, () => {
-            console.log('Server is running on port: %s', http.address().port)
-        })
-    } catch (e) {
-        console.error('Failed to connect to the database:', e)
-    }
+	try {
+		await client.connect()
+		collection = client.db('feed').collection('posts')
+		http.listen(process.env.PORT, () => {
+			console.log('Server is running on port: %s', http.address().port)
+		})
+	} catch (e) {
+		console.error('Failed to connect to the database:', e)
+	}
 }
 startServer()

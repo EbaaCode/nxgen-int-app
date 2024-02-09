@@ -1,6 +1,6 @@
 <router-outlet />
 <main class="flex flex-col items-center text-white">
-  <div class="border-x-[1px] border-slate-600 w-5/6 lg:w-2/4">
+  <div class="border-x-[1px] h-screen border-slate-600 w-5/6 lg:w-2/4">
     <form
       class="flex gap-4 border-b-[1px] border-slate-600 px-5 h-20"
       (ngSubmit)="sendPost()"
@@ -16,7 +16,7 @@
         required
       />
       <button
-        class="self-center w-20 font-bold transition-colors rounded-full bg-violet-500 hover:enabled:bg-violet-600 active:bg-violet-700 disabled:opacity-50 h-9"
+        class="self-center w-20 font-bold transition-colors rounded-full bg-violet-500 hover:enabled:bg-violet-600 active:enabled:bg-violet-700 disabled:opacity-50 h-9"
         type="submit"
         [disabled]="!content"
       >
